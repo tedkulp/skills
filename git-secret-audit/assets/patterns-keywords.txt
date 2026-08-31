@@ -1,0 +1,1 @@
+(password|passwd|pwd|secret|token|api[_-]?key|apikey|access[_-]?key|private[_-]?key|client[_-]?secret|auth|credential)[A-Za-z0-9_]*["']?[[:space:]]*[=:][[:space:]]*['"]?[^'"[:space:],;]{8,}

@@ -1,0 +1,18 @@
+AKIA[0-9A-Z]{16}
+ASIA[0-9A-Z]{16}
+aws_secret_access_key[[:space:]]*[=:][[:space:]]*[A-Za-z0-9/+=]{40}
+gh[pousr]_[A-Za-z0-9]{36,}
+github_pat_[A-Za-z0-9_]{80,}
+glpat-[A-Za-z0-9_-]{20,}
+sk_live_[0-9a-zA-Z]{24,}
+rk_live_[0-9a-zA-Z]{24,}
+xox[baprs]-[0-9A-Za-z-]{10,}
+https://hooks\.slack\.com/services/[A-Za-z0-9/]+
+AIza[0-9A-Za-z_-]{35}
+GOCSPX-[A-Za-z0-9_-]{24,}
+ya29\.[0-9A-Za-z_-]+
+sk-[A-Za-z0-9]{20,}
+sk-ant-[A-Za-z0-9_-]{20,}
+-----BEGIN [A-Z ]*PRIVATE KEY-----
+eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}
+(postgres|postgresql|mysql|mongodb(\+srv)?|redis|amqp)://[^[:space:]:@/]+:[^[:space:]@/]+@
