@@ -72,4 +72,4 @@ One line each: the issue URL and the labels. Don't ask follow-up questions about
 
 ## 6. Triage it
 
-If the issue was filed as `needs-triage`, immediately invoke the triage skill with the Skill tool (`mattpocock-skills:triage`, args `<N>`) and follow it from there. Don't stop to ask whether to triage. Skip this step if it was filed `ready-for-agent`, and end with the next command, `/implement #N`.
+If the issue was filed as `needs-triage`, immediately read `~/.claude/plugins/marketplaces/mattpocock/skills/engineering/triage/SKILL.md` and follow it for issue `#N`, resolving relative references (like `AGENT-BRIEF.md`) against that directory. Don't stop to ask whether to triage. Skip this step if it was filed `ready-for-agent`, and end with the next command, `/implement #N`.
