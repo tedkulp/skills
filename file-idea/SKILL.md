@@ -72,4 +72,11 @@ One line each: the issue URL and the labels. Don't ask follow-up questions about
 
 ## 6. Triage it
 
-If the issue was filed as `needs-triage`, immediately read `~/.claude/plugins/marketplaces/mattpocock/skills/engineering/triage/SKILL.md` and follow it for issue `#N`, resolving relative references (like `AGENT-BRIEF.md`) against that directory. Don't stop to ask whether to triage. Skip this step if it was filed `ready-for-agent`, and end with the next command, `/implement #N`.
+If the issue was filed as `needs-triage`, immediately read the triage skill's `SKILL.md` and follow it for issue `#N`, resolving relative references (like `AGENT-BRIEF.md`) against its directory. Use the first one that exists:
+
+1. `.claude/skills/triage/SKILL.md` or `.agents/skills/triage/SKILL.md` in the repo
+2. `~/.claude/skills/triage/SKILL.md` or `~/.agents/skills/triage/SKILL.md`
+3. `~/.claude/plugins/marketplaces/*/skills/engineering/triage/SKILL.md`
+4. Otherwise search: `find ~/.claude ~/.agents -path '*/triage/SKILL.md' 2>/dev/null`, and pick the one whose frontmatter says `name: triage`
+
+If none is found, end with the issue URL and the next command, `/triage #N`. Don't stop to ask whether to triage. Skip this step if it was filed `ready-for-agent`, and end with the next command, `/implement #N`.
