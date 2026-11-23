@@ -2,7 +2,7 @@
 name: implement-batch
 description: Run /implement on several tickets or work items at once, each in its own background subagent, merged onto one integration branch.
 disable-model-invocation: true
-argument-hint: "<ticket numbers or items, e.g. 12 15 18>"
+argument-hint: "[ticket numbers or items, e.g. 12 15 18]"
 ---
 
 # Implement batch
@@ -15,7 +15,11 @@ Communicate with subagents through **context pointers** (ticket numbers, file pa
 
 The arguments are ticket references (`12`, `#12`), freeform work descriptions, or a mix. If the split between items is ambiguous, ask.
 
-For ticket references, the repo must be set up: `CLAUDE.md` or `AGENTS.md` has an `## Agent skills` section and `docs/agents/issue-tracker.md` exists. If not, stop and tell the user to run `/setup-matt-pocock-skills`. Read `docs/agents/issue-tracker.md` and `docs/agents/triage-labels.md`; every tracker operation below follows them.
+**Without arguments**, the batch is every open, unassigned ticket with the `ready-for-agent` label (string from `triage-labels.md`). Blocked ones are fine if their blockers are in the batch too. If none qualify, list each open agent-ready ticket with what holds it (e.g. `#27: blocked by #46`, `#31: assigned to @x`), then stop.
+
+If that's more than 5 tickets, don't take them all. Propose a batch of up to 5: lowest-numbered frontier tickets first, plus anything they unblock, preferring tickets that touch the same code area so merges stay cheap. Show the proposed batch and the leftovers, one line each, and ask the user to confirm or edit before going on.
+
+For ticket references, and the no-argument case, check this first: the repo must be set up: `CLAUDE.md` or `AGENTS.md` has an `## Agent skills` section and `docs/agents/issue-tracker.md` exists. If not, stop and tell the user to run `/setup-matt-pocock-skills`. Read `docs/agents/issue-tracker.md` and `docs/agents/triage-labels.md`; every tracker operation below follows them.
 
 For each ticket, check its state. Flag any that is closed, assigned to someone else, or has an open blocker **outside** the batch, and ask before keeping it.
 
